@@ -111,7 +111,9 @@ app.put('/usuarios/:id', (req, res) =>{
             console.error(err.message);
             return res.status(500).json({error: 'Erro ao atuaizar usuario'});
         }
-        if (this.changes > 0){
+       if (this.changes > 0){
+            res.json({message: 'Usuário atualizado com sucesso'});
+        } else {
             res.status(404).json({error: 'Usuário não encontrado'});
         }
     });
@@ -146,4 +148,5 @@ process.on('SIGINT', () =>{
         console.log('Conexão com o banco de daods SQLite fechada');
         process.exit(0);
     });
+
 });
